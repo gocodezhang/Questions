@@ -1,0 +1,39 @@
+{
+  "name": "questions",
+  "version": "1.0.0",
+  "description": "Question API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SDC-SwellSpinach/Questions.git"
+  },
+  "author": "Jay Zhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SDC-SwellSpinach/Questions/issues"
+  },
+  "homepage": "https://github.com/SDC-SwellSpinach/Questions#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "eslint": "^8.41.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0"
+  }
+}
