@@ -29,5 +29,7 @@ module.exports = {
     'guard-for-in': 'off',
     'prefer-arrow-callback': 'off',
     'func-names': 'off',
+    'import/extensions': 'off',
+    'camelcase': 'off',
   },
 };
