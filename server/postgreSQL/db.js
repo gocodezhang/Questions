@@ -46,7 +46,7 @@ client.query(`CREATE TABLE IF NOT EXISTS landing_photos (
   url varchar(2048)
 )`)
   .then(() => {
-    console.log('photos created');
+    console.log('landing_photos created');
   })
   .catch((err) => (console.log(err)));
 
@@ -82,6 +82,34 @@ client.query(`CREATE TABLE IF NOT EXISTS answers (
 )`)
   .then(() => {
     console.log('answers created');
+  })
+  .catch((err) => (console.log(err)));
+
+client.query(`DROP TABLE photos CASCADE`);
+client.query(`CREATE TABLE IF NOT EXISTS photos (
+  id SERIAL PRIMARY KEY,
+  answer_id integer REFERENCES answers (id) ON DELETE CASCADE,
+  url varchar(2048)
+)`)
+  .then(() => {
+    console.log('photos created');
+  })
+  .catch((err) => (console.log(err)));
+
+client.query(`DROP TABLE questions_answers CASCADE`);
+client.query(`CREATE TABLE IF NOT EXISTS questions_answers (
+  id SERIAL PRIMARY KEY,
+  product_id integer,
+  question_body varchar(1000),
+  question_date timestamp DEFAULT current_timestamp,
+  asker_name varchar(60),
+  asker_email varchar(60),
+  reported boolean DEFAULT FALSE,
+  question_helpfulness integer DEFAULT 0,
+  answers json DEFAULT '{}'
+)`)
+  .then(() => {
+    console.log('questions_answers created');
     client.end();
   })
   .catch((err) => (console.log(err)));

@@ -1,20 +1,31 @@
-const { Pool } = require('pg');
-
-const pool = new Pool({
-  database: 'questionapi',
-});
+const { pool } = require('./pool.js');
 
 module.exports = {
   queryQuestions(product_id, page, count) {
     const offset = (page - 1) * count;
 
-    return pool.query(`SELECT t1.id as id,
-    t1.body as body, t1.date_written as date, answerer_name, t1.helpful as helpfulness,
-    t1.reported as reported, json_agg(json_build_object('id', t2.id, 'url', t2.url))
-    FROM landing_answers as t1
-    JOIN landing_photos as t2 ON t1.id=t2.answer_id
-    GROUP BY t1.id
-    LIMIT 10`);
+    return pool.query(
+      `SELECT * FROM questions_answers
+      WHERE product_id=${product_id} LIMIT ${count} OFFSET ${offset}`,
+    );
+  },
+
+  insertQuestion(productId, body, name, email) {
+    return pool.query(`INSERT INTO questions (product_id, question_body, asker_name, asker_email)
+      VALUES ($1, $2, $3, $4) RETURNING *`, [productId, body, name, email])
+      .then((result) => {
+        const {
+          id, product_id, question_body, question_date,
+          asker_name, asker_email, reported, question_helpfulness,
+        } = result.rows[0];
+        pool.query(`INSERT INTO questions_answers
+        (id, product_id, question_body, question_date, asker_name, asker_email, reported, question_helpfulness) VALUES
+        ($1, $2, $3, $4, $5, $6, $7, $8)`, [id, product_id, question_body, question_date, asker_name, asker_email, reported, question_helpfulness])
+          .then(() => {
+            console.log('new record inserted into both tables');
+          })
+          .catch((err) => (console.log(err)));
+      });
   },
 };
 

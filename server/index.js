@@ -15,10 +15,10 @@ app.use(express.json());
 
 // Get requests
 app.get('/qa/questions', controller.getQuestions);
-// app.get('/qa/questions/:question_id/answers', )
+app.get('/qa/questions/:question_id/answers', controller.getAnswers);
 
 // Post requests
-// app.post('/qa/questions')
+app.post('/qa/questions', controller.addQuestion);
 // app.post('/qa/questions/:question_id/answers')
 
 // Put requests
