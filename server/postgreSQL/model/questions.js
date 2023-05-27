@@ -18,13 +18,27 @@ module.exports = {
           id, product_id, question_body, question_date,
           asker_name, asker_email, reported, question_helpfulness,
         } = result.rows[0];
-        pool.query(`INSERT INTO questions_answers
+        return pool.query(`INSERT INTO questions_answers
         (id, product_id, question_body, question_date, asker_name, asker_email, reported, question_helpfulness) VALUES
-        ($1, $2, $3, $4, $5, $6, $7, $8)`, [id, product_id, question_body, question_date, asker_name, asker_email, reported, question_helpfulness])
-          .then(() => {
-            console.log('new record inserted into both tables');
-          })
-          .catch((err) => (console.log(err)));
+        ($1, $2, $3, $4, $5, $6, $7, $8)`, [id, product_id, question_body, question_date, asker_name, asker_email, reported, question_helpfulness]);
+      });
+  },
+
+  reportQuestion(question_id) {
+    return pool.query(`UPDATE questions SET reported = TRUE WHERE id = ${question_id}`)
+      .then(() => {
+        console.log('reported in the question table');
+        return pool.query(`UPDATE questions_answers SET reported = TRUE WHERE id = ${question_id}`);
+      });
+  },
+
+  markQuestionHelpful(question_id) {
+    return pool.query(`UPDATE questions SET question_helpfulness = question_helpfulness + 1
+      WHERE id = ${question_id}`)
+      .then(() => {
+        console.log('marked in the question table');
+        return pool.query(`UPDATE questions_answers SET question_helpfulness = question_helpfulness + 1
+        WHERE id = ${question_id}`);
       });
   },
 };
