@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "build": "node server/postgreSQL/db.js && node server/postgreSQL/data-import.js && node server/postgreSQL/data-etl.js"
   },
   "repository": {
     "type": "git",

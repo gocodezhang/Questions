@@ -22,7 +22,7 @@ client.query(`INSERT INTO questions
 client.query(`INSERT INTO answers
   SELECT t1.id, t1.question_id,
   t1.body, to_timestamp(t1.date_written/1000), t1.answerer_name, t1.answerer_email, t1.reported::BOOLEAN,
-  t1.helpful as helpfulness, COALESCE(json_agg(json_build_object('id', t2.id, 'url', t2.url)) FILTER (WHERE t2.id IS NOT NULL), '[]')
+  t1.helpful as helpfulness, COALESCE(jsonb_agg(jsonb_build_object('id', t2.id, 'url', t2.url)) FILTER (WHERE t2.id IS NOT NULL), '[]')
   FROM landing_answers as t1
   LEFT JOIN landing_photos as t2 ON t1.id=t2.answer_id
   GROUP BY t1.id`)
@@ -50,8 +50,8 @@ client.query(`INSERT INTO questions_answers
   SELECT t1.id as id, t1.product_id,
   t1.question_body as question_body, t1.question_date as question_date, asker_name, asker_email, t1.reported as reported,
   t1.question_helpfulness as question_helpfulness, COALESCE(
-    json_object_agg(t2.id,
-    json_build_object('id', t2.id, 'body', t2.body, 'date', t2.date, 'answerer_name', t2.answerer_name, 'helpfulness', t2.helpfulness, 'photos', t2.photos))
+    jsonb_object_agg(t2.id,
+    jsonb_build_object('id', t2.id, 'body', t2.body, 'date', t2.date, 'answerer_name', t2.answerer_name, 'helpfulness', t2.helpfulness, 'photos', t2.photos))
   FILTER (WHERE t2.id IS NOT NULL), '{}') as answers
   FROM questions as t1
   LEFT JOIN answers as t2 ON t1.id=t2.question_id

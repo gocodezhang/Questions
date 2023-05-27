@@ -78,7 +78,7 @@ client.query(`CREATE TABLE IF NOT EXISTS answers (
   answerer_email varchar(60),
   reported boolean DEFAULT FALSE,
   helpfulness integer DEFAULT 0,
-  photos json
+  photos jsonb DEFAULT '[]'
 )`)
   .then(() => {
     console.log('answers created');
@@ -106,7 +106,7 @@ client.query(`CREATE TABLE IF NOT EXISTS questions_answers (
   asker_email varchar(60),
   reported boolean DEFAULT FALSE,
   question_helpfulness integer DEFAULT 0,
-  answers json DEFAULT '{}'
+  answers jsonb DEFAULT '{}'
 )`)
   .then(() => {
     console.log('questions_answers created');
