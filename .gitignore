@@ -2,3 +2,5 @@ node_modules
 questions-data
 
 .DS_Store
+
+coverage
