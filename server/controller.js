@@ -4,11 +4,12 @@ module.exports = {
   getQuestions(req, res) {
     /* eslint prefer-const: 0 */
     let { product_id, page, count } = req.query;
-    console.log(req.query);
     page = page || 1;
     count = count || 5;
+    // console.time();
     model.questions.queryQuestions(product_id, page, count)
       .then((result) => {
+        // console.timeEnd();
         res.status(200).send(result.rows);
       })
       .catch((err) => {
