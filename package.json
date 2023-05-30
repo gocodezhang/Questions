@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.js",
-    "build": "node server/postgreSQL/db.js && node server/postgreSQL/data-import.js && node server/postgreSQL/data-etl.js"
+    "build": "node server/postgreSQL/db.js && node server/postgreSQL/data-import.js && node server/postgreSQL/data-etl.js",
+    "stress-test": "k6 run stress-testing/localstress.js"
   },
   "repository": {
     "type": "git",
