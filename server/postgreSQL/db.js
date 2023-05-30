@@ -110,6 +110,18 @@ client.query(`CREATE TABLE IF NOT EXISTS questions_answers (
 )`)
   .then(() => {
     console.log('questions_answers created');
+  })
+  .catch((err) => (console.log(err)));
+
+client.query(`CREATE INDEX question_id_hashing ON answers USING HASH (question_id)`)
+  .then(() => {
+    console.log('index in answers is created')
+  })
+  .catch((err) => (console.log(err)));
+
+client.query(`CREATE INDEX product_id_hashing ON questions_answers USING HASH (product_id)`)
+  .then(() => {
+    console.log('index in questions_answers is created');
     client.end();
   })
   .catch((err) => (console.log(err)));

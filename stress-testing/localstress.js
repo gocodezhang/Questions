@@ -15,5 +15,5 @@ export const options = {
 export default function () {
   const endpoint = '/qa/questions';
   const id = getRandomINT(minProductId, maxProductId);
-  http.get(`${url + endpoint}?product_id=1`);
+  http.get(`${url + endpoint}?product_id=${id}`);
 }
