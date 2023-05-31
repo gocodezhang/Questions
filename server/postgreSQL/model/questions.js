@@ -5,7 +5,7 @@ module.exports = {
     const offset = (page - 1) * count;
 
     return pool.query(
-      `SELECT * FROM questions_answers
+      `SELECT id as question_id, question_body, question_date, asker_name, question_helpfulness, reported, answers FROM questions_answers
       WHERE product_id=${product_id} LIMIT ${count} OFFSET ${offset}`,
     );
   },

@@ -10,7 +10,11 @@ module.exports = {
     model.questions.queryQuestions(product_id, page, count)
       .then((result) => {
         // console.timeEnd();
-        res.status(200).send(result.rows);
+        const resultObj = {
+          product_id,
+          results: result.rows,
+        };
+        res.status(200).send(resultObj);
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +44,13 @@ module.exports = {
     count = count || 5;
     model.answers.queryAnswers(question_id, page, count)
       .then((result) => {
-        res.status(200).send(result.rows);
+        const resultObj = {
+          question: question_id,
+          page,
+          count,
+          results: result.rows,
+        };
+        res.status(200).send(resultObj);
       })
       .catch((err) => {
         console.log(err);
