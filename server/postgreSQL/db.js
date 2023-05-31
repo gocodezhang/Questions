@@ -28,7 +28,7 @@ client.query(`CREATE TABLE IF NOT EXISTS landing_questions (
   .then(() => (console.log('landing_questions created')))
   .catch((err) => (console.log(err)));
 
-// client.query(`DROP TABLE landing_answers CASCADE`);
+client.query(`DROP TABLE landing_answers CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS landing_answers (
   id SERIAL PRIMARY KEY,
   question_id integer REFERENCES landing_questions (id) ON DELETE CASCADE,
@@ -42,7 +42,7 @@ client.query(`CREATE TABLE IF NOT EXISTS landing_answers (
   .then(() => (console.log('landing_answers created')))
   .catch((err) => (console.log(err)));
 
-// client.query(`DROP TABLE landing_photos CASCADE`);
+client.query(`DROP TABLE landing_photos CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS landing_photos (
   id SERIAL PRIMARY KEY,
   answer_id integer REFERENCES landing_answers (id) ON DELETE CASCADE,
