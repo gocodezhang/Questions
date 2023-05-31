@@ -14,7 +14,7 @@ client.connect();
 ---------------------------------------------------------------------------------*/
 
 /* eslint quotes: 0 */
-client.query(`DROP TABLE landing_questions CASCADE`);
+// client.query(`DROP TABLE landing_questions CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS landing_questions (
     id SERIAL PRIMARY KEY,
     product_id integer,
@@ -28,7 +28,7 @@ client.query(`CREATE TABLE IF NOT EXISTS landing_questions (
   .then(() => (console.log('landing_questions created')))
   .catch((err) => (console.log(err)));
 
-client.query(`DROP TABLE landing_answers CASCADE`);
+// client.query(`DROP TABLE landing_answers CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS landing_answers (
   id SERIAL PRIMARY KEY,
   question_id integer REFERENCES landing_questions (id) ON DELETE CASCADE,
@@ -42,7 +42,7 @@ client.query(`CREATE TABLE IF NOT EXISTS landing_answers (
   .then(() => (console.log('landing_answers created')))
   .catch((err) => (console.log(err)));
 
-client.query(`DROP TABLE landing_photos CASCADE`);
+// client.query(`DROP TABLE landing_photos CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS landing_photos (
   id SERIAL PRIMARY KEY,
   answer_id integer REFERENCES landing_answers (id) ON DELETE CASCADE,
@@ -57,7 +57,7 @@ client.query(`CREATE TABLE IF NOT EXISTS landing_photos (
 ------------- Business layers table (for API calls) ------------------------------
 ---------------------------------------------------------------------------------*/
 
-client.query(`DROP TABLE questions CASCADE`);
+// client.query(`DROP TABLE questions CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS questions (
   id SERIAL PRIMARY KEY,
   product_id integer,
@@ -71,7 +71,7 @@ client.query(`CREATE TABLE IF NOT EXISTS questions (
   .then(() => (console.log('questions created')))
   .catch((err) => (console.log(err)));
 
-client.query(`DROP TABLE answers CASCADE`);
+// client.query(`DROP TABLE answers CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS answers (
   id SERIAL PRIMARY KEY,
   question_id integer REFERENCES questions (id) ON DELETE CASCADE,
@@ -88,7 +88,7 @@ client.query(`CREATE TABLE IF NOT EXISTS answers (
   })
   .catch((err) => (console.log(err)));
 
-client.query(`DROP TABLE photos CASCADE`);
+// client.query(`DROP TABLE photos CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS photos (
   id SERIAL PRIMARY KEY,
   answer_id integer REFERENCES answers (id) ON DELETE CASCADE,
@@ -99,7 +99,7 @@ client.query(`CREATE TABLE IF NOT EXISTS photos (
   })
   .catch((err) => (console.log(err)));
 
-client.query(`DROP TABLE questions_answers CASCADE`);
+// client.query(`DROP TABLE questions_answers CASCADE`);
 client.query(`CREATE TABLE IF NOT EXISTS questions_answers (
   id SERIAL PRIMARY KEY,
   product_id integer,
