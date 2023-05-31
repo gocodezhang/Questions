@@ -115,7 +115,7 @@ client.query(`CREATE TABLE IF NOT EXISTS questions_answers (
 
 client.query(`CREATE INDEX question_id_hashing ON answers USING HASH (question_id)`)
   .then(() => {
-    console.log('index in answers is created')
+    console.log('index in answers is created');
   })
   .catch((err) => (console.log(err)));
 

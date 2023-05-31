@@ -1,3 +1,4 @@
+/* eslint import/no-unresolved: 0 */
 const http = require('k6/http');
 
 const url = 'http://localhost:3000';
@@ -9,7 +10,7 @@ const minQuestionId = Math.ceil(maxQuestionId * 0.9);
 
 function getRandomINT(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 
 export const options = {
   scenarios: {

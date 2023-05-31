@@ -1,3 +1,4 @@
+/* eslint import/no-unresolved: 0 */
 const http = require('k6/http');
 
 const url = 'http://localhost:3000';
@@ -7,7 +8,7 @@ const minProductId = Math.ceil(maxProductId * 0.9);
 
 function getRandomINT(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 
 export const options = {
   scenarios: {
@@ -29,7 +30,7 @@ export default function () {
     product_id: randomProductId,
     body: 'testing again',
     name: 'jayz',
-    email: 'jayz123@gmail.com'
-  }
-  http.post(`${url + endpoint}`, body)
+    email: 'jayz123@gmail.com',
+  };
+  http.post(`${url + endpoint}`, body);
 }

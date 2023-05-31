@@ -20,7 +20,7 @@ describe('Testing on GET questions requests ', () => {
       .get('/qa/questions')
       .query({ product_id: 1 })
       .then((res) => {
-        expect(res.body.length).toBe(5);
+        expect(res.body.results.length).toBe(5);
       })
       .then(() => (done()));
   }, 10000);
@@ -30,7 +30,7 @@ describe('Testing on GET questions requests ', () => {
       .get('/qa/questions')
       .query({ product_id: getRandomINT(9000, 10000), count: 10 })
       .then((res) => {
-        expect(res.body.length).toBeLessThanOrEqual(10);
+        expect(res.body.results.length).toBeLessThanOrEqual(10);
       })
       .then(() => (done()));
   }, 10000);
@@ -53,7 +53,7 @@ describe('Testing on GET answers requests', () => {
     request('http://localhost:3000')
       .get('/qa/questions/1/answers')
       .then((res) => {
-        expect(res.body.length).toBe(5);
+        expect(res.body.results.length).toBe(5);
       })
       .then(() => (done()));
   }, 10000);
@@ -63,7 +63,7 @@ describe('Testing on GET answers requests', () => {
       .get('/qa/questions/5/answers')
       .query({ count: 8 })
       .then((res) => {
-        expect(res.body.length).toBeGreaterThanOrEqual(5);
+        expect(res.body.results.length).toBeGreaterThanOrEqual(5);
       })
       .then(() => (done()));
   }, 10000);
