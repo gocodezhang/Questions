@@ -1,7 +1,10 @@
 const { Client } = require('pg');
+require('dotenv').config();
 
 const client = new Client({
   database: 'questionapi',
+  user: 'jayzhang',
+  password: process.env.PASSWORD,
 });
 
 client.connect();

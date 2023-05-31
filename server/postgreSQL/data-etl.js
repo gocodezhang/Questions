@@ -2,6 +2,8 @@ const { Client } = require('pg');
 
 const client = new Client({
   database: 'questionapi',
+  user: 'jayzhang',
+  password: process.env.PASSWORD,
 });
 
 client.connect();
