@@ -6,3 +6,5 @@ questions-data
 coverage
 
 .env
+
+load-balance.conf

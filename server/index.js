@@ -13,7 +13,7 @@ app.use(express.json());
 // Set up routes
 
 // loader.io verification
-app.get('/loaderio-60ffc13ae3baf137c20d094ad5233efb', (req, res) => (res.status(200).send('loaderio-60ffc13ae3baf137c20d094ad5233efb')));
+app.get('/loaderio-e3f75fcf13a84d19a3bb28c035253069', (req, res) => (res.status(200).send('loaderio-e3f75fcf13a84d19a3bb28c035253069')));
 
 // Get requests
 app.get('/qa/questions', controller.getQuestions);
