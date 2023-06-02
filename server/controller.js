@@ -1,4 +1,9 @@
+const { createClient } = require('redis');
 const model = require('./postgreSQL/model/index.js');
+
+const redisClient = createClient();
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
+redisClient.connect();
 
 module.exports = {
   getQuestions(req, res) {
@@ -7,14 +12,24 @@ module.exports = {
     page = page || 1;
     count = count || 5;
     // console.time();
-    model.questions.queryQuestions(product_id, page, count)
-      .then((result) => {
-        // console.timeEnd();
-        const resultObj = {
-          product_id,
-          results: result.rows,
-        };
-        res.status(200).send(resultObj);
+    redisClient.get(`product-${product_id}`)
+      .then((resultCache) => {
+        if (resultCache) {
+          console.log('using cache for the product id');
+          res.status(200).send(JSON.parse(resultCache));
+        } else {
+          return model.questions.queryQuestions(product_id, page, count)
+            .then((result) => {
+              // console.timeEnd();
+              const resultObj = {
+                product_id,
+                results: result.rows,
+              };
+              res.status(200).send(resultObj);
+              return redisClient.set(`product-${product_id}`, JSON.stringify(resultObj))
+                .then(() => (console.log('cache set for the product id')));
+            });
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -42,15 +57,25 @@ module.exports = {
     const { question_id } = req.params;
     page = page || 1;
     count = count || 5;
-    model.answers.queryAnswers(question_id, page, count)
-      .then((result) => {
-        const resultObj = {
-          question: question_id,
-          page,
-          count,
-          results: result.rows,
-        };
-        res.status(200).send(resultObj);
+    redisClient.get(`question-${question_id}`)
+      .then((resultCache) => {
+        if (resultCache) {
+          console.log('using cache for the question id');
+          res.status(200).send(JSON.parse(resultCache));
+        } else {
+          return model.answers.queryAnswers(question_id, page, count)
+            .then((result) => {
+              const resultObj = {
+                question: question_id,
+                page,
+                count,
+                results: result.rows,
+              };
+              res.status(200).send(resultObj);
+              return redisClient.set(`question-${question_id}`, JSON.stringify(resultObj))
+                .then(() => (console.log('cache set for the question id')));
+            });
+        }
       })
       .catch((err) => {
         console.log(err);
