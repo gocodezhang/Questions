@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const pool = new Pool({
   database: 'questionapi',
-  user: process.env.USER,
+  user: process.env.USERNAME,
   password: process.env.PASSWORD,
   port: process.env.PORT,
   host: process.env.HOST,
