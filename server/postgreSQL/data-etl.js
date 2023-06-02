@@ -57,12 +57,18 @@ client.query(`INSERT INTO questions_answers
   FROM questions as t1
   LEFT JOIN answers as t2 ON t1.id=t2.question_id
   GROUP BY t1.id`)
-  .then(() => {
+  .then(() => (
     client.query(`SELECT setval('questions_answers_id_seq', (select max(id) from questions_answers))`)
-      .then(() => {
-        console.log('inserted into questions_answers');
-        client.end();
-      })
-      .catch((err) => (console.log(err)));
+  ))
+  .then(() => (
+    Promise.all([
+      client.query(`DROP TABLE landing_questions CASCADE`),
+      client.query(`DROP TABLE landing_answers CASCADE`),
+      client.query(`DROP TABLE landing_photos CASCADE`),
+    ])
+  ))
+  .then(() => {
+    console.log('all landing tables dropped');
+    client.end();
   })
   .catch((err) => (console.log(err)));
