@@ -53,10 +53,6 @@ The project is to revamp the existing backend system for an e-commerce website b
 * Mark a question as helpful or report a question
 * Mark an answer as helpful or report an answer
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
 This API service is mainly built using ```Node.js``` and ```Express.js``` with ```PostreSQL``` database. It was deployed into AWS environment using total of 4 EC2 instances. Please note below for the comprehensive list of technology used
@@ -91,12 +87,8 @@ WIP
 ## Contact
 
 Gaoyuan Zhang
-<a href="https://www.linkedin.com/in/jay-zhang-709086158/">
-  <img src="https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white" alt="github"/>
-</a>
-<a href="mailto:zgy25483387@gmail.com">
-  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="email"/>
-</a>
+* [![github]](github-url)
+* [![gmail]](gmail-url)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,4 +104,8 @@ Gaoyuan Zhang
 [Nginx]: https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white
 [AWS]: https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white
 [k6]: https://img.shields.io/badge/k6-7D64FF.svg?style=for-the-badge&logo=k6&logoColor=white
+[github]: https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white
+[github-url]: https://github.com/gocodezhang
+[gmail]: https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white
+[gmail-url]: mailto:zgy25483387@gmail.com
 
