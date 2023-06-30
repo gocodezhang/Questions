@@ -84,8 +84,14 @@ Question & Answer API is deployed and live in the AWS cloud environment. The sys
 
 ### Performance
 
+Database benchmark (prior to deployment):
+* The API service is able to withstand 100 RPS with latency <100ms and 0% error rate
+* Test tool: k6
 
-
+Final Performance (post deployment):
+* The API service is able to sustain 2000 RPS with latency ~50ms and 0% error rate
+* Test tool: loader.io
+![cloud-testing]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,4 +128,5 @@ Gaoyuan Zhang
 [gmail]: https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white
 [gmail-url]: mailto:zgy25483387@gmail.com
 [system-diagram]: assets/SDC-system-diagram.png
+[cloud-testing]: assets/final-cloud-testing.png
 
