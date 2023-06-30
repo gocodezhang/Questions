@@ -30,7 +30,7 @@
       </ul>
     </li>
     <li>
-      <a href="#scaling-techniques-and-performance">Scaling Techniques and Performance</a>
+      <a href="#scaling-techniques-and-performance">System Design and Performance</a>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -75,7 +75,7 @@ This API service is mainly built using ```Node.js``` and ```Express.js``` with `
 ### System Architecture
 ![system-diagram]
 
-Question & Answer API is deployed and live in the AWS cloud environment. The system consists of 4 EC2 instances where
+**Question & Answer API** is deployed and live in the AWS cloud environment. The system consists of 4 EC2 instances where
 1. One single EC2 instance is for Question & Answer database built with ```PostgreSQL```
    * It contains ETL processes and leverage indexing to maximize the read speed
 2. Two EC2 instances are used as the servers to response to client requests.
@@ -84,11 +84,11 @@ Question & Answer API is deployed and live in the AWS cloud environment. The sys
 
 ### Performance
 
-Database benchmark (prior to deployment):
+#### Database benchmark (prior to deployment):
 * The API service is able to withstand 100 RPS with latency <100ms and 0% error rate
 * Test tool: k6
 
-Final Performance (post deployment):
+#### Final Performance (post deployment):
 * The API service is able to sustain 2000 RPS with latency ~50ms and 0% error rate
 * Test tool: loader.io
 ![cloud-testing]
