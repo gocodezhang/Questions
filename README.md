@@ -72,7 +72,20 @@ This API service is mainly built using ```Node.js``` and ```Express.js``` with `
 <!-- SCALING TECHNIQUES AND PERFORMANCE -->
 ## System Design and Performance
 
-WIP
+### System Architecture
+![system-diagram]
+
+Question & Answer API is deployed and live in the AWS cloud environment. The system consists of 4 EC2 instances where
+1. One single EC2 instance is for Question & Answer database built with ```PostgreSQL```
+   * It contains ETL processes and leverage indexing to maximize the read speed
+2. Two EC2 instances are used as the servers to response to client requests.
+   * Each server contains caching feature to avoid duplicated requests to the database
+3. The last EC2 instance is for load balancing built with ```Nginx``` to distribute traffic among the two servers
+
+### Performance
+
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,4 +121,5 @@ Gaoyuan Zhang
 [github-url]: https://github.com/gocodezhang
 [gmail]: https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white
 [gmail-url]: mailto:zgy25483387@gmail.com
+[system-diagram]: assets/SDC-system-diagram.png
 
