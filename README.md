@@ -43,7 +43,7 @@
 # Question & Answers API
 
 ## About The Project
-The project is to revamp the existing backend system for an e-commerce website (please see the frontend details of the website [here](front-end-url)) by decomposing a monolithic API into multiple micro services including **Question & Answers API**.
+The project is to revamp the existing backend system for an e-commerce website (please see the frontend details of the website [here](https://github.com/FEC-Pina-Fraise-Frivolities/Atelier)) by decomposing a monolithic API into multiple micro services including **Question & Answers API**.
 
 **Question & Answers API** is responsible for all below HTTP requests.  Post revamp, the API can now handle 2000 RPS with 100ms latency and 0% error rate compared with the origin capacity of 100 RPS.
 * Read a list of questions for a particular product
@@ -106,7 +106,7 @@ This API service is mainly built using ```Node.js``` and ```Express.js``` with `
 ## Contact
 
 Gaoyuan Zhang
-* [![github]](github-url)
+* [![github]](https://github.com/gocodezhang)
 * [![gmail]](gmail-url)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
