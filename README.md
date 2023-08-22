@@ -107,7 +107,7 @@ This API service is mainly built using ```Node.js``` and ```Express.js``` with `
 
 Gaoyuan Zhang
 * [![github]](https://github.com/gocodezhang)
-* [![gmail]](gmail-url)
+* [![gmail]](mailto:zgy25483387@gmail.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,7 +126,6 @@ Gaoyuan Zhang
 [github]: https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white
 [github-url]: https://github.com/gocodezhang
 [gmail]: https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white
-[gmail-url]: mailto:zgy25483387@gmail.com
 [system-diagram]: assets/SDC-system-diagram.png
 [cloud-testing]: assets/final-cloud-testing.png
 [front-end-url]: https://github.com/FEC-Pina-Fraise-Frivolities/Atelier
