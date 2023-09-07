@@ -40,12 +40,12 @@
 
 
 <!-- ABOUT THE PROJECT -->
-# Question & Answers API
+# Question & Answers Microservice
 
 ## About The Project
-The project is to revamp the existing backend system for an e-commerce website (please see the frontend details of the website [here](https://github.com/FEC-Pina-Fraise-Frivolities/Atelier)) by decomposing a monolithic API into multiple micro services including **Question & Answers API**.
+The project is to revamp the existing backend system for an e-commerce website (please see the frontend details of the website [here](https://github.com/FEC-Pina-Fraise-Frivolities/Atelier)) by decomposing a monolithic API into multiple microservices including **Question & Answers**.
 
-**Question & Answers API** is responsible for all below HTTP requests.  Post revamp, the API can now handle 2000 RPS with 100ms latency and 0% error rate compared with the origin capacity of 100 RPS.
+**Question & Answers Microservice** is responsible for all below HTTP requests.  Post revamp, the microservice can now handle 2000 RPS with 100ms latency and 0% error rate compared with the origin capacity of 100 RPS.
 * Read a list of questions for a particular product
 * Read a list of answers for a particular question
 * Add a questions for a given product
@@ -55,7 +55,7 @@ The project is to revamp the existing backend system for an e-commerce website (
 
 ### Built With
 
-This API service is mainly built using ```Node.js``` and ```Express.js``` with ```PostreSQL``` database. It was deployed into AWS environment using total of 4 EC2 instances. Please note below for the comprehensive list of technology used
+This service is mainly built using ```Node.js``` and ```Express.js``` with ```PostreSQL``` database. It was deployed into AWS environment using total of 4 EC2 instances. Please note below for the comprehensive list of technology used
 
 * ![Node.js]
 * ![Express.js]
@@ -75,7 +75,7 @@ This API service is mainly built using ```Node.js``` and ```Express.js``` with `
 ### System Architecture
 ![system-diagram]
 
-**Question & Answer API** is deployed and live in the AWS cloud environment. The system consists of 4 EC2 instances where
+**Question & Answer Microservice** is deployed and live in the AWS cloud environment. The system consists of 4 EC2 instances where
 1. One single EC2 instance is for Question & Answer database built with ```PostgreSQL```
    * It contains ETL processes and leverage indexing to maximize the read speed
 2. Two EC2 instances are used as the servers to response to client requests.
@@ -85,11 +85,11 @@ This API service is mainly built using ```Node.js``` and ```Express.js``` with `
 ### Performance
 
 #### Database benchmark (prior to deployment):
-* The API service is able to withstand 100 RPS with latency <100ms and 0% error rate
+* The microservice is able to withstand 100 RPS with latency <100ms and 0% error rate
 * Test tool: k6
 
 #### Final Performance (post deployment):
-* The API service is able to sustain 2000 RPS with latency ~50ms and 0% error rate
+* The miscroservice is able to sustain 2000 RPS with latency ~50ms and 0% error rate
 * Test tool: loader.io
 ![cloud-testing]
 
